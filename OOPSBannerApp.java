@@ -2,9 +2,10 @@ import java.util.HashMap;
 
 public class OOPSBannerApp {
 
+    // ---------- Utility method to build character map ----------
     public static HashMap<Character, String[]> createCharacterMap() {
 
-        HashMap<Character, String[]> map = new HashMap<>();
+        HashMap<Character,String[]> map = new HashMap<>();
 
         // O (9 rows)
         map.put('O', new String[]{
@@ -21,15 +22,15 @@ public class OOPSBannerApp {
 
         // P (9 rows)
         map.put('P', new String[]{
-                "*******    ",
-                "**     **  ",
-                "**      ** ",
-                "**     **  ",
-                "*******    ",
-                "**        ",
-                "**        ",
-                "**        ",
-                "**        "
+                "*******  ",
+                "**    ** ",
+                "**     **",
+                "**    ** ",
+                "*******  ",
+                "**       ",
+                "**       ",
+                "**       ",
+                "**       "
         });
 
         // S (9 rows)
@@ -38,10 +39,10 @@ public class OOPSBannerApp {
                 " **      ",
                 "**       ",
                 "**       ",
-                "  ***   ",
-                "      ** ",
-                "       **",
-                "      ** ",
+                " ***   ",
+                "     ** ",
+                "      **",
+                "     ** ",
                 " *****  "
         });
 
@@ -49,28 +50,39 @@ public class OOPSBannerApp {
     }
 
 
+    // ---------- Render banner ----------
     public static void displayBanner(String msg,
                                      HashMap<Character,String[]> map) {
 
+        msg = msg.toUpperCase();
+
         int height = map.get('O').length;
 
-        for(int row = 0; row < height; row++) {
+        // outer loop = rows
+        for(int row=0; row<height; row++){
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder line = new StringBuilder();
 
-            for(char ch : msg.toCharArray()) {
-                sb.append(map.get(ch)[row]).append("   ");
+            // inner loop = characters
+            for(char ch : msg.toCharArray()){
+
+                String[] pattern = map.get(ch);
+
+                if(pattern != null){
+                    line.append(pattern[row]).append("   ");
+                }
             }
 
-            System.out.println(sb);
+            System.out.println(line);
         }
     }
 
 
+    // ---------- MAIN ----------
     public static void main(String[] args) {
 
-        HashMap<Character,String[]> charMap = createCharacterMap();
+        HashMap<Character,String[]> map = createCharacterMap();
 
-        displayBanner("OOPS", charMap);
+        displayBanner("OOPS", map);
     }
 }
