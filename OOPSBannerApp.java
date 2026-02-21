@@ -4,59 +4,73 @@
  * @author Nallana Sai Suraj
  * @version 6.0
  */
+class CharacterPatternMap {
+
+    public String[] getPattern(char ch) {
+
+        switch (ch) {
+
+            case 'O':
+                return new String[]{
+                        "   ***   ",
+                        " **   ** ",
+                        "**     **",
+                        "**     **",
+                        "**     **",
+                        "**     **",
+                        "**     **",
+                        " **   ** ",
+                        "   ***   "
+                };
+
+            case 'P':
+                return new String[]{
+                        "*******  ",
+                        "**    ** ",
+                        "**     **",
+                        "**    ** ",
+                        "*******  ",
+                        "**       ",
+                        "**       ",
+                        "**       ",
+                        "**       "
+                };
+
+            case 'S':
+                return new String[]{
+                        "  ***** ",
+                        " **     ",
+                        "**      ",
+                        " **      ",
+                        "   ***   ",
+                        "      ** ",
+                        "       ** ",
+                        "      ** ",
+                        " *****  "
+                };
+
+            default:
+                return new String[]{" "};
+        }
+    }
+}
+
+
+
 public class OOPSBannerApp {
-
-   
-    public static String[] getOPattern() {
-        return new String[]{
-                "   ***   ",
-                " **   ** ",
-                "**     **",
-                "**     **",
-                "**     **",
-                "**     **",
-                "**     **",
-                " **   ** ",
-                "   ***   "
-        };
-    }
-
-        public static String[] getPPattern() {
-        return new String[]{
-                "*******  ",
-                "**    ** ",
-                "**     **",
-                "**    ** ",
-                "*******  ",
-                "**       ",
-                "**       ",
-                "**       ",
-                "**       "
-        };
-    }
-
-    
-    public static String[] getSPattern() {
-        return new String[]{
-                "  *****  ",
-                " **      ",
-                "**       ",
-                " **      ",
-                "  *****  ",
-                "      ** ",
-                "       ** ",
-                "      ** ",
-                " *****  "
-        };
-    }
 
     public static void main(String[] args) {
 
-        String[] o = getOPattern();
-        String[] p = getPPattern();
-        String[] s = getSPattern();
+        CharacterPatternMap map = new CharacterPatternMap();
+
+        String word = "OOPS";
+
+        String[] o = map.getPattern('O');
+        String[] p = map.getPattern('P');
+        String[] s = map.getPattern('S');
 
         for (int i = 0; i < o.length; i++) {
+
             System.out.println(
                     o[i] + "   " +
                     o[i] + "   " +
@@ -66,3 +80,4 @@ public class OOPSBannerApp {
         }
     }
 }
+
