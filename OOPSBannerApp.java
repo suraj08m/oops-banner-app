@@ -1,83 +1,76 @@
-/**
- * OOPSBannerApp UC5 – Render OOPS as Banner using Inline Array Initialization
- *
- * @author Nallana Sai Suraj
- * @version 6.0
- */
-class CharacterPatternMap {
-
-    public String[] getPattern(char ch) {
-
-        switch (ch) {
-
-            case 'O':
-                return new String[]{
-                        "   ***   ",
-                        " **   ** ",
-                        "**     **",
-                        "**     **",
-                        "**     **",
-                        "**     **",
-                        "**     **",
-                        " **   ** ",
-                        "   ***   "
-                };
-
-            case 'P':
-                return new String[]{
-                        "*******  ",
-                        "**    ** ",
-                        "**     **",
-                        "**    ** ",
-                        "*******  ",
-                        "**       ",
-                        "**       ",
-                        "**       ",
-                        "**       "
-                };
-
-            case 'S':
-                return new String[]{
-                        "  ***** ",
-                        " **     ",
-                        "**      ",
-                        " **      ",
-                        "   ***   ",
-                        "      ** ",
-                        "       ** ",
-                        "      ** ",
-                        " *****  "
-                };
-
-            default:
-                return new String[]{" "};
-        }
-    }
-}
-
-
+import java.util.HashMap;
 
 public class OOPSBannerApp {
 
-    public static void main(String[] args) {
+    public static HashMap<Character, String[]> createCharacterMap() {
 
-        CharacterPatternMap map = new CharacterPatternMap();
+        HashMap<Character, String[]> map = new HashMap<>();
 
-        String word = "OOPS";
+        // O (9 rows)
+        map.put('O', new String[]{
+                "   ***   ",
+                " **   ** ",
+                "**     **",
+                "**     **",
+                "**     **",
+                "**     **",
+                "**     **",
+                " **   ** ",
+                "   ***   "
+        });
 
-        String[] o = map.getPattern('O');
-        String[] p = map.getPattern('P');
-        String[] s = map.getPattern('S');
+        // P (9 rows)
+        map.put('P', new String[]{
+                "*******    ",
+                "**     **  ",
+                "**      ** ",
+                "**     **  ",
+                "*******    ",
+                "**        ",
+                "**        ",
+                "**        ",
+                "**        "
+        });
 
-        for (int i = 0; i < o.length; i++) {
+        // S (9 rows)
+        map.put('S', new String[]{
+                "  *****  ",
+                " **      ",
+                "**       ",
+                "**       ",
+                "  ***   ",
+                "      ** ",
+                "       **",
+                "      ** ",
+                " *****  "
+        });
 
-            System.out.println(
-                    o[i] + "   " +
-                    o[i] + "   " +
-                    p[i] + "   " +
-                    s[i]
-            );
+        return map;
+    }
+
+
+    public static void displayBanner(String msg,
+                                     HashMap<Character,String[]> map) {
+
+        int height = map.get('O').length;
+
+        for(int row = 0; row < height; row++) {
+
+            StringBuilder sb = new StringBuilder();
+
+            for(char ch : msg.toCharArray()) {
+                sb.append(map.get(ch)[row]).append("   ");
+            }
+
+            System.out.println(sb);
         }
     }
-}
 
+
+    public static void main(String[] args) {
+
+        HashMap<Character,String[]> charMap = createCharacterMap();
+
+        displayBanner("OOPS", charMap);
+    }
+}
