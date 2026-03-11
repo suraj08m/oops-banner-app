@@ -1,5 +1,5 @@
 /**
- * OOPSBannerApp UC5 – Render OOPS as Banner using Inline Array Initialization
+ * OOPSBannerApp UC6 – Render OOPS as Banner using Inline Array Initialization
  *
  * @author Nallana Sai Suraj
  * @version 6.0
